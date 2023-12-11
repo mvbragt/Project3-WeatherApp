@@ -44,7 +44,6 @@ function handleClick(){
     const zipCode = document.getElementById('zip').value;
     const feelings = document.getElementById('feelings').value;
     const date = document.getElementById('date').innerHTML = newDate;
-    const temp = document.getElementById('temp').innerHTML;
     getWeatherData(openWeatherUrl, apiKey);
     postData('/weatherJournal', {temp, date, zipCode, feelings});
 }
@@ -70,6 +69,10 @@ const retrieveData = async () =>{
     }
     catch(error) {
         console.log("error", error);
-        // appropriately handle the error
+        window.onerror = function() {
+            var message = "something went wrong, try again"
+            alert(message);
+            return true;
+        };
     }
 }
