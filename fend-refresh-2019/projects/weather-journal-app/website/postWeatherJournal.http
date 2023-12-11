@@ -1,0 +1,8 @@
+POST http://localhost:3000/weatherJournal
+Content-Type: application/json
+
+{
+        "temperature": 12,
+        "date": "date test",
+        "userResponse": "userResponse"
+}
