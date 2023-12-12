@@ -34,20 +34,26 @@ function listening(){
 
 app.get('/weatherJournal', function (req, response) {
   let data = {};
-    if (projectData){
+  if (projectData){
+      console.log('current project data',projectData);
       data = projectData[projectData.length-1]
-  }    return response.send(data)
+
+  }
+    console.log('returned get data', data);
+    return response.send(data)
 });
 
 //Post
 function pushData(req, res) {
     console.log('Inside pushData function in server', req.body);
     const newDataEntry = {
-        temperature: req.body.temperature,
+        temp: req.body.temp,
         date: req.body.date,
-        userResponse: req.body.userResponse
+        feelings: req.body.feelings,
+        zipCode: req.body.zipCode
     }
     projectData.push(newDataEntry);
+    console.log('After push', projectData);
     res.send(projectData)
 }
 
